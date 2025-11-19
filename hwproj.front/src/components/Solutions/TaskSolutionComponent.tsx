@@ -31,6 +31,7 @@ import BlurOffIcon from '@mui/icons-material/BlurOff';
 import FileInfoConverter from "@/components/Utils/FileInfoConverter";
 import {IFileInfo} from "@/components/Files/IFileInfo";
 import FilesPreviewList from "@/components/Files/FilesPreviewList";
+import {CourseUnitType} from "@/components/Files/CourseUnitType";
 
 interface ISolutionProps {
     courseId: number,
@@ -187,7 +188,7 @@ const TaskSolutionComponent: FC<ISolutionProps> = (props) => {
     const lecturer = solution?.lecturer
     const lecturerName = lecturer && (lecturer.surname + " " + lecturer.name)
     const commitsActuality = solutionActuality?.commitsActuality
-    const filesInfo = solution?.id ? FileInfoConverter.getSolutionFilesInfo(props.courseFilesInfo, solution.id) : []
+    const filesInfo = solution?.id ? FileInfoConverter.getCourseUnitFilesInfo(props.courseFilesInfo, CourseUnitType.Solution, solution.id) : []
 
     const getDatesDiff = (_date1: Date, _date2: Date) => {
         const truncateToMinutes = (date: Date) => {
